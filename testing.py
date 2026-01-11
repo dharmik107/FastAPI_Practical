@@ -23,3 +23,12 @@ def user_update(id: int, user:User):
         return {"error": "User not found"}
 
 
+@app.delete("/user/delete/{id}")
+def delete_user(id:int):
+    if id in user_db:
+        del user_db[id]
+        print(user_db)
+        return {"Message":"User deleted successfully"}
+    else:
+        return {"Error":"User not found"}
+
